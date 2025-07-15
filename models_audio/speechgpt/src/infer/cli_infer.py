@@ -17,6 +17,8 @@ from peft import PeftModel
 import sys
 sys.path.append('/home/XXX/agent/AudioAttack/models_audio/speechgpt')
 sys.path.append('/home/ec2-user/agent/AudioAttack/models_audio/speechgpt')
+import sys
+sys.path.append('/media/ssd4/hxy/AdvWave/models_audio/speechgpt')
 from utils.speech2unit.speech2unit import Speech2Unit
 import transformers
 from transformers import AutoConfig, LlamaForCausalLM, LlamaTokenizer, GenerationConfig

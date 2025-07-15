@@ -1,6 +1,6 @@
-from .gpt4os2s.audioEnc import audioEncode
-from .gpt4os2s.audioInteract import audioCall
-from .gpt4os2s.blackbox_attack import blackbox_attack
+# from .gpt4os2s.audioEnc import audioEncode
+# from .gpt4os2s.audioInteract import audioCall
+# from .gpt4os2s.blackbox_attack import blackbox_attack
 from dataclasses import dataclass
 import os
 from transformers import AutoProcessor

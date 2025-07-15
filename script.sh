@@ -39,7 +39,7 @@
 #CUDA_VISIBLE_DEVICES=4 python main.py --model speechgpt --idstr sota --start 400 --end 500 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours_universal --text_evaluation_model sorrybench
 
 # qwen attack
-#CUDA_VISIBLE_DEVICES=0 python main.py --model qwen2 --idstr maintable --advnoise_control carhorn --start 300 --end 310 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
+CUDA_VISIBLE_DEVICES=0 python3 main.py --model qwen2 --idstr maintable --advnoise_control carhorn --start 300 --end 310 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
 #CUDA_VISIBLE_DEVICES=1 python main.py --model qwen2 --idstr maintable --advnoise_control carhorn --start 310 --end 320 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
 #CUDA_VISIBLE_DEVICES=3 python main.py --model qwen2 --idstr maintable --advnoise_control carhorn --start 320 --end 330 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
 #CUDA_VISIBLE_DEVICES=7 python main.py --model qwen2 --idstr maintable --advnoise_control carhorn --start 330 --end 340 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
