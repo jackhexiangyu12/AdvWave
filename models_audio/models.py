@@ -34,16 +34,21 @@ class models_audio():
                                                            # cache_dir="/data/common/XXX/cache"
                                                            #       cache_dir="/data1/common/XXX/huggingface/"
                                                            )
-            self.model = Qwen2AudioForConditionalGeneration.from_pretrained("Qwen/Qwen2-Audio-7B-Instruct", device_map="cuda:0",
-                                                                            # cache_dir="/data/common/XXX/cache"
-                                                                            # cache_dir="/data1/common/XXX/huggingface/"
-                                                                            )
+            # self.model = Qwen2AudioForConditionalGeneration.from_pretrained("Qwen/Qwen2-Audio-7B-Instruct", device_map="cuda:0",
+            #                                                                 # cache_dir="/data/common/XXX/cache"
+            #                                                                 # cache_dir="/data1/common/XXX/huggingface/"
+            #                                                                 )
+            self.model = Qwen2AudioForConditionalGeneration.from_pretrained("Qwen/Qwen2-Audio-7B-Instruct",
+                                                                # cache_dir="/data/common/XXX/cache"
+                                                                # cache_dir="/data1/common/XXX/huggingface/"
+                                                                )
             if len(self.args.advnoise_control)>0:
                 self.advnoise_control = True
                 self.model_judge = None
                 # self.model_judge = Qwen2AudioForConditionalGeneration.from_pretrained("Qwen/Qwen2-Audio-7B-Instruct",
                 #                                                                 device_map="cuda:2",
                 #                                                                 )
+                
             self.forward = self.qwen2_forward
         elif model == "omni_speech":
             disable_torch_init()

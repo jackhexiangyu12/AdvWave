@@ -17,7 +17,7 @@ def get_audio_list(dataset, jailbreak, voice_id=0, speed=1):
 
     text_data = []
     if not os.path.exists(input_file):
-        input_file = input_file.replace("XXX", "ec2-user")
+        input_file = input_file.replace("XXX", "hxy")
     with open(input_file, 'r') as infile:
         for line in infile:
             json_object = json.loads(line)
