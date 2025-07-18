@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import csv
 
 load_dotenv()
-openai_key = ''
+openai_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=openai_key)
 
 
