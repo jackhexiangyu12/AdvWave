@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     if args.jailbreak=="audio_ours":
         adaptive_targets =[]
-        with open(f'/home/XXX/agent/AudioAttack/output/{args.dataset}/optimization_target_search/{args.model}/optimization_targets.jsonl', 'r', encoding='utf-8') as file:
+        with open(f'/media/ssd4/hxy/AdvWave/output/{args.dataset}/optimization_target_search/{args.model}/optimization_targets.jsonl', 'r', encoding='utf-8') as file:
             for line in file:
                 adaptive_targets.append(json.loads(line.strip()))
 
