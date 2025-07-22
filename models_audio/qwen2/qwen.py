@@ -207,7 +207,7 @@ def qwen_jailbreak_gen(ori_prompt, audio_list, processor, model, audio_save_path
     # target_text = "Sure"
 
     # Load the CSV file
-    file_path = '/home/XXX/agent/AudioAttack/data/harmful_behaviors.csv'  # Replace with the path to your CSV file
+    file_path = 'AdvWave/data/harmful_behaviors.csv'  # Replace with the path to your CSV file
     data = pd.read_csv(file_path)
     for index, row in data.iterrows():
         row = row.to_dict()
