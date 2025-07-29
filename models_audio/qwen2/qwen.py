@@ -164,6 +164,7 @@ def get_adv_targets(text, targets, model, processor, audios):
         shift = inputs_embeds.shape[1] - target_ids.shape[1]
         shift_logits = logits[..., shift - 1:-1, :].contiguous()  # (1, num_target_ids, vocab_size)
         shift_labels = target_ids
+        shift_labels = shift_labels.to(shift_logits.device)
         loss = torch.nn.functional.cross_entropy(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
         if loss < best_loss:
             target_ind = ind
@@ -286,6 +287,7 @@ def qwen_jailbreak_gen(ori_prompt, audio_list, processor, model, audio_save_path
         shift = inputs_embeds.shape[1] - target_ids.shape[1]
         shift_logits = logits[..., shift - 1:-1, :].contiguous()  # (1, num_target_ids, vocab_size)
         shift_labels = target_ids
+        shift_labels = shift_labels.to(shift_logits.device)
         loss = torch.nn.functional.cross_entropy(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
 
         grad1 = torch.autograd.grad(outputs=[loss], inputs=[adv_audio_suffix])[0]
@@ -303,6 +305,7 @@ def qwen_jailbreak_gen(ori_prompt, audio_list, processor, model, audio_save_path
             shift = inputs_embeds.shape[1] - target_ids_judge.shape[1]
             shift_logits = logits[..., shift - 1:-1, :].contiguous()  # (1, num_target_ids, vocab_size)
             shift_labels = target_ids_judge
+            shift_labels = shift_labels.to(shift_logits.device)
             loss2 = torch.nn.functional.cross_entropy(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
             grad2 = torch.autograd.grad(outputs=[loss2], inputs=[adv_audio_suffix])[0]
             adv_audio_suffix.grad += grad2
