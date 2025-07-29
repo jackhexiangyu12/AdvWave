@@ -12,11 +12,22 @@ import torchaudio
 import pandas as pd
 def get_input_embeds(model, input_ids, input_features, feature_attention_mask, attention_mask, labels):
     # 1. Extract the input embeddings
+    # Ensure input_ids is on the same device as the model
+    device = next(model.parameters()).device
+    input_ids = input_ids.to(device)
     inputs_embeds = model.get_input_embeddings()(input_ids)
 
 
     # 2. Merge text and audios
     if input_features is not None and input_ids.shape[1] != 1:
+        # Ensure all tensors are on the same device
+        if feature_attention_mask is not None:
+            feature_attention_mask = feature_attention_mask.to(device)
+        if input_features is not None:
+            input_features = input_features.to(device)
+        if attention_mask is not None:
+            attention_mask = attention_mask.to(device)
+            
         audio_feat_lengths, audio_output_lengths = model.audio_tower._get_feat_extract_output_lengths(
             feature_attention_mask.sum(-1)
         )
@@ -207,7 +218,7 @@ def qwen_jailbreak_gen(ori_prompt, audio_list, processor, model, audio_save_path
     # target_text = "Sure"
 
     # Load the CSV file
-    file_path = 'AdvWave/data/harmful_behaviors.csv'  # Replace with the path to your CSV file
+    file_path = 'data/harmful_behaviors.csv'  # Replace with the path to your CSV file
     data = pd.read_csv(file_path)
     for index, row in data.iterrows():
         row = row.to_dict()
