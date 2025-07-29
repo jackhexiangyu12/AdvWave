@@ -1175,6 +1175,7 @@ class Qwen2AudioForConditionalGeneration(Qwen2AudioPreTrainedModel):
 
         if inputs_embeds is None:
             # 1. Extract the input embeddings
+            input_ids = input_ids.to(self.get_input_embeddings().weight.device)
             inputs_embeds = self.get_input_embeddings()(input_ids)
 
             # 2. Merge text and audios

@@ -56,7 +56,7 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py --model qwen2 --idstr maintable --advnois
 
 
 # omni_speech
-#CUDA_VISIBLE_DEVICES=0 python main.py --model omni_speech --idstr maintable --advnoise_control carhorn --start 0 --end 75 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
+CUDA_VISIBLE_DEVICES=0 python main.py --model omni_speech --idstr maintable --advnoise_control carhorn --start 0 --end 75 --evaluate_gpu_id 0 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
 #CUDA_VISIBLE_DEVICES=1 python main.py --model omni_speech --idstr maintable --advnoise_control carhorn --start 75 --end 150 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
 #CUDA_VISIBLE_DEVICES=2 python main.py --model omni_speech --idstr maintable --advnoise_control carhorn --start 150 --end 225 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench
 #CUDA_VISIBLE_DEVICES=3 python main.py --model omni_speech --idstr maintable --advnoise_control carhorn --start 225 --end 300 --evaluate_gpu_id 1 --dataset advbench --jailbreak audio_ours --text_evaluation_model sorrybench

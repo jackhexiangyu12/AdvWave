@@ -4,7 +4,7 @@ import types
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
+import whisper
 
 class WhisperWrappedEncoder:
     
@@ -22,7 +22,7 @@ class WhisperWrappedEncoder:
                 else:
                     replace_layer_norm(child)
 
-        import whisper
+        
         encoder = whisper.load_model(name=model_config.speech_encoder, device='cpu').encoder
         replace_layer_norm(encoder)
         return encoder

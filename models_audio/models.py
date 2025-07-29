@@ -108,7 +108,7 @@ class models_audio():
     def qwen2_forward(self, audio_list, id, ori_prompt=None, initial_audio=None, targets=None):
         if self.args.jailbreak == "audio_ours":
             response_text, record = qwen_jailbreak_gen(ori_prompt, audio_list, self.processor, self.model,
-                                                  audio_save_path=os.path.join(self.savedir, f"{id}.wav"), num_token_suffix = 20000, num_epochs = 3000, advnoise_control=self.advnoise_control, control_obj=self.args.advnoise_control, model_judge=self.model_judge, targets=targets)
+                                                  audio_save_path=os.path.join(self.savedir, f"{id}.wav"), num_token_suffix = 20000, num_epochs = 30, advnoise_control=self.advnoise_control, control_obj=self.args.advnoise_control, model_judge=self.model_judge, targets=targets)
         else:
             response_text = qwen_eval_gen(audio_list, self.processor, self.model)
             record = []
